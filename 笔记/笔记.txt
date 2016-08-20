@@ -1,0 +1,75 @@
+1.在background-position与background一起使用，然后实现一张组合图显示不同位置时。前者代码必须放在后者的后面，否则无效。
+2.实现三角形的代码
+	border: 20px solid transparent;
+	border-bottom-color:  #fff;
+3.用css实现弹窗，css实现动画弹窗，并且使动画停在最后的位置
+
+html代码
+<li class="set_box">
+	<a href="http://www.baidu.com/gaoji/preferences.html" class="set">设置</a>
+	<!-- 弹窗-->
+	<div class="box">
+		<div class="white-horn"></div>
+		<a  href="">搜索设置</a>
+		<a href="//www.baidu.com/gaoji/advanced.html" target="_blank">高级搜索</a>
+		<a href="">关闭预测</a>
+		<a href="">搜索历史</a>
+	</div>
+	<!-- end弹窗-->
+</li>
+
+css代码
+.link .set_box .box{
+    position: absolute;
+    right: 5.8rem;
+    top: 4.5rem;
+    width: 6rem;
+    height: auto;
+    border: .1rem solid #eee;
+	display: none;
+	opacity: 0;
+	z-index: 8;
+	background-color: #fff;
+	filter:drop-shadow(0 0 .3rem rgba(0,0,0,0.1));
+	-webkit-filter: drop-shadow(0 0 .3rem rgba(0,0,0,0.1));
+}
+.white-horn{
+	margin: 0 auto;
+	position: absolute;
+	top: -1.3rem;
+    right: 2.2rem;
+	width: 0;
+	height: 0;
+	border: .7rem solid transparent;
+	border-bottom-color:  #fff;
+	z-index: 10;
+}
+.link .set_box .box a{
+	display: block;
+	height: 2.2rem;
+	width: 100%;
+	text-decoration: none;
+	text-align: center;
+	line-height: 2.2rem;
+	padding: 0 .4rem;
+	font-size: 1.3rem;
+}
+.link .set_box .box a:hover{
+	background-color: #2d78f4;
+	color: #fff;
+}
+//重点在这,实现弹窗动画，并锁定最终结果
+.link .set_box:hover .box{
+	display: block;
+	animation: out 1s linear forwards;
+	-webkit-animation: out 1s linear forwards;
+	 /*  animation-fill-mode : forwards */
+}
+@keyframes out{
+	0%{opacity: 0}
+	100%{opacity: 1}
+}
+@-webkit-keyframes out{
+	0%{opacity: 0}
+	100%{opacity: 1}
+}
